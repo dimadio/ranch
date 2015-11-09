@@ -57,6 +57,8 @@
 	| {reuse_session, fun()}
 	| {reuse_sessions, boolean()}
 	| {secure_renegotiate, boolean()}
+        | {sni_fun, fun()}
+	| {sni_hosts, [{string(), ssl_opt()}]}
 	| {send_timeout, timeout()}
 	| {send_timeout_close, boolean()}
 	| {verify, ssl:verify_type()}
@@ -87,7 +89,7 @@ listen(Opts) ->
 			next_protocols_advertised, nodelay,
 			log_alert, password, port, raw,
 			reuse_session, reuse_sessions, secure_renegotiate,
-			send_timeout, send_timeout_close, verify, verify_fun,
+			sni_fun, sni_hosts, send_timeout, send_timeout_close, verify, verify_fun,
 			versions],
 		[binary, {active, false}, {packet, raw},
 			{reuseaddr, true}, {nodelay, true}])).
